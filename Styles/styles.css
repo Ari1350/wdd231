@@ -20,6 +20,9 @@ header img {
     margin-right: 20px;
     height: 80px; 
     width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 header span {
@@ -30,6 +33,11 @@ header span {
     align-items: center;
 }
 
+nav {
+    display: flex;
+    gap: 10px;
+}
+
 nav a {
     color: white;
     background-color: #0c1955;
@@ -37,6 +45,10 @@ nav a {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+nav a:hover {
+    background-color: #01796F;
 }
 
 main {
