@@ -8,41 +8,59 @@ body {
 header {
     background-color: #011449; 
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     padding: 15px;
     border-bottom: 5px solid #000d52; 
 }
 
 header img {
     border-radius: 50%;
-    margin-right: 20px;
+    display: block;
+    margin: 0 auto;
     height: 80px; 
     width: 80px;
 }
 
 header span {
-    font-size: 24px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 nav {
+    margin-top: 15px;
+}
+
+nnav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav li {
+    display: inline-block;
 }
 
 nav a {
     color: white;
+    text-decoration: none;
+    padding: 10px 15px;
     background-color: #0c1955;
-    justify-content: space-between;
-    align-items: center;
+    border-radius: 5px;
+    font-size: 0.9em;
 }
 
 nav a:hover {
     background-color: #01796F;
+}
+
+nav a.active {
+    background-color: #01796F;
+    font-weight: bold;
 }
 
 main {
