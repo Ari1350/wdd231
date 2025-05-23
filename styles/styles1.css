@@ -32,12 +32,12 @@ nav {
     margin-top: 15px;
 }
 
-nnav ul {
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 20px;
 }
 
