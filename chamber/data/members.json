@@ -1,18 +1,58 @@
 [
     {
         "name": "Timbuktu Coffee Shop",
-        "address": "123 Main Street",
-        "phone": "555-1234",
+        "address": "65 Main Street",
+        "phone": "335-1234",
         "website": "http://timbuktucoffee.com",
         "image": "images/3.webp",
         "membershipLevel": 1
     },
     {
         "name": "Desert Adventures",
-        "address": "456 Sahara Lane",
-        "phone": "555-5678",
+        "address": "56 Centenario Street",
+        "phone": "338-5678",
         "website": "http://desertadventures.com",
         "image": "images/2.webp",
         "membershipLevel": 3
+     },
+    {
+        "name": "The Crafts Place",
+        "address": "23 Market Plaza",
+        "phone": "337-7890",
+        "website": "http://saharacrafts.com",
+        "image": "images/4.webp",
+        "membershipLevel": 2
+    },
+    {
+        "name": "Timbuktu Rentals",
+        "address": "78 Sahara Road",
+        "phone": "334-2468",
+        "website": "http://timbukturentals.com",
+        "image": "images/5.webp",
+        "membershipLevel": 1
+    },
+    {
+        "name": "Golden Dunes Hotel",
+        "address": "90 Sunset Boulevard",
+        "phone": "333-9510",
+        "website": "http://goldenduneshotel.com",
+        "image": "images/6.webp",
+        "membershipLevel": 3
+    },
+    {
+        "name": "Timbuktu Market",
+        "address": "15 Old Town",
+        "phone": "332-8421",
+        "website": "http://timbuktumarket.com",
+        "image": "images/7.webp",
+        "membershipLevel": 2
+    },
+    {
+        "name": "Sahara Spa",
+        "address": "45 Wellness Avenue",
+        "phone": "331-7465",
+        "website": "http://saharaspa.com",
+        "image": "images/8.webp",
+        "membershipLevel": 1
     }
 ]
