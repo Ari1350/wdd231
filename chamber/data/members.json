@@ -24,7 +24,7 @@
         "membershipLevel": 2
     },
     {
-        "name": "Timbuktu Rentals",
+        "name": "Timbuktu Marina",
         "address": "78 Sahara Road",
         "phone": "334-2468",
         "website": "http://timbukturentals.com",
@@ -32,7 +32,7 @@
         "membershipLevel": 1
     },
     {
-        "name": "Golden Dunes Hotel",
+        "name": "Grand Hotel",
         "address": "90 Sunset Boulevard",
         "phone": "333-9510",
         "website": "http://goldenduneshotel.com",
@@ -40,7 +40,7 @@
         "membershipLevel": 3
     },
     {
-        "name": "Timbuktu Market",
+        "name": "Market",
         "address": "15 Old Town",
         "phone": "332-8421",
         "website": "http://timbuktumarket.com",
@@ -48,7 +48,7 @@
         "membershipLevel": 2
     },
     {
-        "name": "Sahara Spa",
+        "name": "Beauty Spa",
         "address": "45 Wellness Avenue",
         "phone": "331-7465",
         "website": "http://saharaspa.com",
