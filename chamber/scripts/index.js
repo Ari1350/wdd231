@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const weatherApiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-    const location = 'Timbuktu';
-    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${weatherApiKey}`;
     const membersJsonUrl = "data/index.json";
 
     fetch(weatherApiUrl)
