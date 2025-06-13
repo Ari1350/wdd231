@@ -9,15 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", (event) => {
         timestampField.value = generateTimestamp();
-    });
 
-    form.addEventListener("submit", (event) => {
         const firstName = document.querySelector("#first-name").value.trim();
         const lastName = document.querySelector("#last-name").value.trim();
         const email = document.querySelector("#email").value.trim();
 
         if (!firstName || !lastName || !email) {
-            event.preventDefault();
+            event.preventDefault(); 
             alert("Please fill in all required fields.");
         }
     });
