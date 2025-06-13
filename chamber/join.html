@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timbuktu Chamber of Commerce Directory</title>
+    <meta name="description" content="Explore businesses in Timbuktu through our comprehensive directory.">
+    <meta name="author" content="Guadalupe Arias">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="scripts/index.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <meta property="og:title" content="Timbuktu Chamber of Commerce Directory">
+    <meta property="og:description" content="Discover Timbuktu businesses, events, and resources.">
+    <meta property="og:image" content="https://ari1350.github.io/wdd231/chamber/images/favicon.ico">
+    <meta property="og:url" content="https://ari1350.github.io/wdd231/chamber/index.html">
+    <meta property="og:type" content="website">
+   
+</head>
+<body>
+    <header>
+        <h2>Timbuktu Chamber of Commerce</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+      <main>
+        <section>
+            <h2>Join Us</h2>
+            <form method="get" action="thankyou.html">
+                <label for="first-name">Applicant's First Name:</label>
+                <input type="text" id="first-name" name="first-name" title="First Name" autocomplete="given-name" required>
+
+                <label for="last-name">Applicant's Last Name:</label>
+                <input type="text" id="last-name" name="last-name" title="Last Name" autocomplete="family-name" required>
+
+                <label for="organization-title">Organizational Title:</label>
+                <input type="text" id="organization-title" name="organization-title" title="Title within the organization" 
+                       autocomplete="organization-title" pattern="[A-Za-z\-\s]{7,}" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" title="Email Address" autocomplete="email" placeholder="example@mail.com" required>
+
+                <label for="phone">Mobile Phone Number:</label>
+                <input type="tel" id="phone" name="phone" title="Mobile Phone" autocomplete="tel" required>
+
+                <label for="organization">Organization Name:</label>
+                <input type="text" id="organization" name="organization" title="Organization Name" autocomplete="organization" required>
+
+                <label for="membership-level">Membership Level:</label>
+                <select id="membership-level" name="membership-level">
+                    <option value="np">NP (No cost)</option>
+                    <option value="bronze">Bronze</option>
+                    <option value="silver">Silver</option>
+                    <option value="gold">Gold</option>
+                </select>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" title="Organization Description"></textarea>
+
+                <input type="hidden" name="timestamp" id="timestamp" value="">
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Membership Levels</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>NP (No cost)</h3>
+                    <a href="#modal-np">Learn more</a>
+                </div>
+                <div class="card">
+                    <h3>Bronze</h3>
+                    <a href="#modal-bronze">Learn more</a>
+                </div>
+                <div class="card">
+                    <h3>Silver</h3>
+                    <a href="#modal-silver">Learn more</a>
+                </div>
+                <div class="card">
+                    <h3>Gold</h3>
+                    <a href="#modal-gold">Learn more</a>
+                </div>
+            </div>
+
+            <div id="modal-np" class="modal">
+                <p>Benefits of NP...</p>
+            </div>
+            <div id="modal-bronze" class="modal">
+                <p>Benefits of Bronze...</p>
+            </div>
+            <div id="modal-silver" class="modal">
+                <p>Benefits of Silver...</p>
+            </div>
+            <div id="modal-gold" class="modal">
+                <p>Benefits of Gold...</p>
+            </div>
+        </section>
+    </main>
+    </main>
+    <footer>
+        <p>© <span id="year"></span> Timbuktu Chamber of Commerce.</p>
+        <p>WDD 231 | Guadalupe Arias Peralta <span id="last-modified"></span></p>
+    </footer>
+</body>
+</html>

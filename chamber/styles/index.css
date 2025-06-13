@@ -18,10 +18,10 @@ header {
     align-items: center;
 }
 
-header nav ul {
+nav ul {
     display: flex;
     list-style: none;
-    margin: 0;
+    justify-content: space-around;
     padding: 0;
 }
 
