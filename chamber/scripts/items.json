@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Historic Library",
+        "image": "images/l.webp",
+        "address": "123 Main St, Timbuktu",
+        "description": "A historic library that offers a wide collection of ancient manuscripts and books."
+    },
+    {
+        "title": "City Park",
+        "image": "images/p.webp",
+        "address": "45 Greenway, Timbuktu",
+        "description": "A beautiful park perfect for picnics, walks, and enjoying nature."
+    },
+    {
+        "title": "Art Museum",
+        "image": "images/m.webp",
+        "address": "89 Art Blvd, Timbuktu",
+        "description": "A museum showcasing local and international art exhibitions."
+    },
+    {
+        "title": "Community Theater",
+        "image": "images/t.webp",
+        "address": "12 Culture Ln, Timbuktu",
+        "description": "Enjoy live performances, plays, and local productions at the community theater."
+    },
+    {
+        "title": "Botanical Garden",
+        "image": "images/j.webp",
+        "address": "77 Nature Rd, Timbuktu",
+        "description": "A lush garden featuring exotic plants and seasonal flowers."
+    },
+    {
+        "title": "Local Market",
+        "image": "images/n.webp",
+        "address": "34 Commerce St, Timbuktu",
+        "description": "Explore the bustling local market for fresh produce and artisan crafts."
+    },
+    {
+        "title": "Sports Arena",
+        "image": "images/a.webp",
+        "address": "506 Victory Ave, Timbuktu",
+        "description": "Home to exciting sports events and live concerts."
+    },
+    {
+        "title": "Science Center",
+        "image": "images/c.webp",
+        "address": "10 Innovation Dr, Timbuktu",
+        "description": "A science center offering interactive exhibits and educational workshops."
+    }
+]
