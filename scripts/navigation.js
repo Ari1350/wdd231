@@ -28,4 +28,4 @@ function renderCourses(filter = "all") {
 document.getElementById('all').addEventListener('click', () => renderCourses('all'));
 document.getElementById('wdd').addEventListener('click', () => renderCourses('WDD'));
 document.getElementById('cse').addEventListener('click', () => renderCourses('CSE'));
-
+document.getElementById("lastModified").textContent = "Last modified: " + document.lastModified;
