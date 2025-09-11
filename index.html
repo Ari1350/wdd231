@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="WDD 231 course homepage, information about the Web and Computer Programming Certificate">
-    <meta name="author" content="Guadalupe Arias Peralta">
+    <meta name="author" content="Guadalupe">
     <title>Guadalupe Arias - WDD231 WED FRONTEND DEVELOPMENT</title>
     <link rel="stylesheet" href="styles/styles1.css">
     <script src="scripts/navigation.js" defer></script>
@@ -14,24 +14,31 @@
 </head>
 <body>
    <header>
-        <img src="images/1.webp" alt="photo Guadalupe">
-        <span>Guadalupe Arias</span>
+        <span>Course WDD-231</span>
         <nav>
             <ul>
                <li><a href="index.html" class="active">Home</a></li>
-               <li><a href="directory.html">Chamber</a></li>
-               <li><a href="">Final</a></li>
-               <li><a href="">GitHub Profile </a></li>
-               <li><a href="www.linkedin.com/">LinkedIn</a></li>
+               <li><a href="directory.html">Chamber Project</a></li>
+               <li><a href="">Final Project</a></li>              
             </ul>
         </nav>
    </header> 
    <main>
-    <h1>Welcome to Course WDD231</h1>
-    <section>
-      <h2>Course Work</h2>
-      <p>The course focuses on user experience, accessibility, compliance, performance optimization, and basic API use.</p>
+    <h1>Home</h1>
+    <div id="about-container">
+    <section id="photo">
+      <h2>Student Photo</h2>
+      <img src="images/1.webp" alt="Guadalupe">
     </section>
+    <section id="About">
+      <h2>About Me</h2>
+      <p>Hello! My name is Guadalupe. I'm from Bolivia. I'm studying Computer Science at FICTT. I enjoy learning programming.
+
+I'm a seminary teacher. I enjoy helping and teaching young people. I also enjoy reading and learning new things.
+
+I'm friendly and patient. I enjoy spending time with friends and family. In the future, I want to be a good engineer and continue learning</p>
+    </section>
+    </div>
     <section>
         <h2>Web and Computer Programming Certificate</h2>
         <div id="certificate">
@@ -53,6 +60,10 @@
    </section>
    </main>
    <footer>
+    <div class="social">
+            <a href="https://github.com/Ari1350" target="_blank" aria-label="GitHub">GitHub</a>
+            <a href="www.linkedin.com/in/guadalupe-arias-peralta-755a2520a" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+        </div>
     <p>©<span id="currentyear"></span> 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>
     <p id="lastModified"></p>
    </footer>
