@@ -157,6 +157,15 @@ footer p {
     font-size: 0.9em;
 }
 
+.social a {
+   color: white;
+   font-size: 1em;
+   margin: 0 10px;
+   transition: color 0.3s;
+}
+.social a:hover {
+   color: #73e577;
+}
 
 @media (max-width: 768px) {
     nav ul {
