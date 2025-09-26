@@ -1,7 +1,7 @@
 [
     {
         "name": "ServicePol",
-        "logo": "images/web",
+        "logo": "images/w3.webp",
         "tagline": "Your trusted partner.",
         "email": "info@servicepol.com",
         "phone": "123-456-7890",
@@ -10,7 +10,7 @@
     },
     {
         "name": "TechGuru",
-        "logo": "images/logo-techguru.png",
+        "logo": "images/w2.webp",
         "tagline": "Innovate with us.",
         "email": "contact@techguru.com",
         "phone": "987-654-3210",
@@ -19,7 +19,7 @@
     },
     {
         "name": "BuildPro",
-        "logo": "images/logo-buildpro.png",
+        "logo": "images/w1.webp",
         "tagline": "We build your dreams.",
         "email": "hello@buildpro.com",
         "phone": "111-222-3333",

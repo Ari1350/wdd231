@@ -1,26 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const weatherApiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=49.75&lon=6.64&units=metric&appid=TU_API_KEY";
+    const url = 'https://api.openweathermap.org/data/2.5/weather?lat=-17.7833&lon=-63.1821&units=metric&appid=TU_API_KEY';
     const membersJsonUrl = "data/index.json";
 
-
-    fetch(weatherApiUrl)
+    // Clima actual
+    fetch(url)
         .then(response => response.json())
         .then(data => {
-            const currentWeather = data.list[0];
-            document.getElementById('current-temp').textContent = `${currentWeather.main.temp}°C`;
-            document.getElementById('current-desc').textContent = currentWeather.weather[0].description;
-
-            const forecastContainer = document.getElementById('forecast');
-            forecastContainer.innerHTML = "";
-            for (let i = 1; i <= 3; i++) {
-                const forecast = data.list[i * 8];
-                const li = document.createElement('li');
-                lli.textContent = `Day ${i}: ${forecast.main.temp.toFixed(1)}°C - ${forecast.weather[0].description}`;
-                forecastContainer.appendChild(li);
-            }
+            document.getElementById('current-temp').textContent = `${data.main.temp.toFixed(1)}°C`;
+            document.getElementById('current-desc').textContent = data.weather[0].description;
         })
         .catch(error => console.error('Error fetching weather data:', error));
 
+    // Miembros
     fetch(membersJsonUrl)
         .then(response => response.json())
         .then(data => {
@@ -45,3 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error fetching members data:', error));
 });
+
