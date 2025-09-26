@@ -54,11 +54,12 @@ header nav a.active, header nav a:hover {
 
 .hero-content {
     position: relative;
-    top: -50px;
+    top: 20px;
 }
 
 .hero-content h1 {
     color: #011449;
+    text-align: center;
 }
 
 .cta-button {

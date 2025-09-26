@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const apiKey = "e01611c6b4704ce75b57d1e31ab2086d";
-    const url = 'https://api.openweathermap.org/data/2.5/weather?lat=-17.7833&lon=-63.1821&units=metric&appid=TU_API_KEY';
+    const url = 'https://api.openweathermap.org/data/2.5/weather?lat=-17.7833&lon=-63.1821&units=metric&appid=e01611c6b4704ce75b57d1e31ab2086d';
     const membersJsonUrl = "data/index.json";
 
     fetch(proxyUrl + url)
