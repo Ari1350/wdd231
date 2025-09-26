@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const weatherApiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=49.75&lon=6.64&units=metric&appid=TU_API_KEY";
     const membersJsonUrl = "data/index.json";
+
 
     fetch(weatherApiUrl)
         .then(response => response.json())
@@ -9,10 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('current-desc').textContent = currentWeather.weather[0].description;
 
             const forecastContainer = document.getElementById('forecast');
+            forecastContainer.innerHTML = "";
             for (let i = 1; i <= 3; i++) {
                 const forecast = data.list[i * 8];
                 const li = document.createElement('li');
-                li.textContent = `Day ${i}: ${forecast.main.temp}°C - ${forecast.weather[0].description}`;
+                lli.textContent = `Day ${i}: ${forecast.main.temp.toFixed(1)}°C - ${forecast.weather[0].description}`;
                 forecastContainer.appendChild(li);
             }
         })
