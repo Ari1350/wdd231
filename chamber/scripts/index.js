@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const apiKey = "e01611c6b4704ce75b57d1e31ab2086d";
     const url = 'https://api.openweathermap.org/data/2.5/weather?lat=-17.7833&lon=-63.1821&units=metric&appid=TU_API_KEY';
     const membersJsonUrl = "data/index.json";
 
-    // Clima actual
-    fetch(url)
+    fetch(proxyUrl + url)
         .then(response => response.json())
         .then(data => {
             document.getElementById('current-temp').textContent = `${data.main.temp.toFixed(1)}°C`;
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error fetching weather data:', error));
 
-    // Miembros
     fetch(membersJsonUrl)
         .then(response => response.json())
         .then(data => {
