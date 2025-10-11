@@ -1,20 +1,44 @@
 [
   {
-    "title": "Crochet Bear",
-    "image": "images/l.webp",
-    "address": "123 Main St, Yarnville",
-    "description": "A soft and cuddly handmade bear."
+    "title": "Crochet Cow",
+    "description": "Handmade crochet cow. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/1.webp",
+    "address": "Santa Cruz, Bolivia"
   },
   {
-    "title": "Crochet Flower",
-    "image": "images/p.webp",
-    "address": "45 Bloom Rd, Yarnville",
-    "description": "A colorful flower to brighten your day."
+    "title": "Crochet Chick",
+    "description": "Handmade crochet chick. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/2.webp",
+    "address": "Santa Cruz, Bolivia"
   },
   {
-    "title": "Crochet Basket",
-    "image": "images/m.webp",
-    "address": "89 Craft Blvd, Yarnville",
-    "description": "Perfect for storing yarn or small gifts."
+    "title": "Crochet Bee",
+    "description": "Handmade crochet bee. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/3.webp",
+    "address": "Santa Cruz, Bolivia"
+  },
+  {
+    "title": "Crochet Capybara",
+    "description": "Handmade crochet capybara. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/4.webp",
+    "address": "Santa Cruz, Bolivia"
+  },
+  {
+    "title": "Crochet Sunflowers",
+    "description": "Handmade crochet sunflowers. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/6.webp",
+    "address": "Santa Cruz, Bolivia"
+  },
+  {
+    "title": "Crochet Roses",
+    "description": "Handmade crochet roses. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/7.webp",
+    "address": "Santa Cruz, Bolivia"
+  },
+  {
+    "title": "Crochet Tulips",
+    "description": "Handmade crochet tulips. Made with love, perfect for a special occasion or a gift.",
+    "image": "images/5.webp",
+    "address": "Santa Cruz, Bolivia"
   }
 ]

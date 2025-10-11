@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const year = new Date().getFullYear();
-  document.getElementById("year")?.textContent = year;
-  document.getElementById("year2")?.textContent = year;
-  document.getElementById("year3")?.textContent = year;
+  const yearEl = document.getElementById("currentyear");
+  if (yearEl) yearEl.textContent = year;
+
+  const lastModEl = document.getElementById("lastModified");
+  if (lastModEl) lastModEl.textContent = `Last modified: ${document.lastModified}`;
 
   if (document.getElementById("featured")) loadFeatured();
   if (document.getElementById("products")) loadProducts();
@@ -11,9 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadFeatured() {
   try {
-    const res = await fetch("js/data.json");
+    const res = await fetch("scripts/data.json");
     const data = await res.json();
     const featured = document.getElementById("featured");
+    if (!featured) return;
+
     data.forEach(item => {
       const card = createCard(item);
       featured.appendChild(card);
@@ -29,6 +33,7 @@ async function loadProducts() {
     const data = await res.json();
     const list = document.getElementById("products");
     const search = document.getElementById("search");
+    if (!list || !search) return;
 
     function render(items) {
       list.innerHTML = "";
@@ -39,9 +44,7 @@ async function loadProducts() {
 
     search.addEventListener("input", e => {
       const term = e.target.value.toLowerCase();
-      const filtered = data.filter(d =>
-        d.title.toLowerCase().includes(term)
-      );
+      const filtered = data.filter(d => d.title.toLowerCase().includes(term));
       render(filtered);
     });
   } catch (err) {
@@ -66,6 +69,7 @@ function createCard(item) {
 function handleForm() {
   const form = document.getElementById("contactForm");
   const output = document.getElementById("output");
+  if (!form || !output) return;
 
   form.addEventListener("submit", e => {
     e.preventDefault();
