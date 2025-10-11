@@ -1,11 +1,14 @@
-.grid-container {
-    grid-template-areas:
-        "card1 card2 card3"
-        "card4 card5 card6"
-        "card7 card8";
-}
+@media (min-width: 1025px) {
+    .grid-container {
+        grid-template-areas:
+            "card1 card2 card3"
+            "card4 card5 card6"
+            "card7 card8 .";
+    }
 
-.card {
-    max-width: 300px;
-    margin: auto;
+    .card img:hover {
+        transform: scale(1.05);
+        filter: brightness(1.15);
+        transition: all 0.3s ease;
+    }
 }

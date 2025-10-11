@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.innerHTML = `
                     <h2>${item.title}</h2>
                     <figure>
-                        <img src="${item.image}" alt="${item.title}">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
                     </figure>
                     <address>${item.address}</address>
                     <p>${item.description}</p>
@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
                 gridContainer.appendChild(card);
             });
-        })
+           document.querySelectorAll("img[loading='lazy']").forEach(img => {
+                img.addEventListener("load", () => img.classList.add("loaded"));
+            });
+        }) 
         .catch(error => console.error("Error loading data:", error));
 });
