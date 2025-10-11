@@ -56,7 +56,7 @@ function createCard(item) {
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
-    <img src="${item.image}" alt="${item.title}">
+    <img src="${item.image}" alt="${item.title}" loading="lazy">
     <div>
       <h3>${item.title}</h3>
       <p>${item.description}</p>
