@@ -131,6 +131,18 @@ form input[type="submit"]:hover, form button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.modal:target {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.card {
+  animation: fadeIn 1s ease forwards;
+}
+
 footer {
     background-color: #011449;
     color: white;
