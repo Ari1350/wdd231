@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Crochet Bear",
+    "image": "images/l.webp",
+    "address": "123 Main St, Yarnville",
+    "description": "A soft and cuddly handmade bear."
+  },
+  {
+    "title": "Crochet Flower",
+    "image": "images/p.webp",
+    "address": "45 Bloom Rd, Yarnville",
+    "description": "A colorful flower to brighten your day."
+  },
+  {
+    "title": "Crochet Basket",
+    "image": "images/m.webp",
+    "address": "89 Craft Blvd, Yarnville",
+    "description": "Perfect for storing yarn or small gifts."
+  }
+]

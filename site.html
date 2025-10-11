@@ -8,54 +8,42 @@
     <link rel="stylesheet" href="styles/site.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <script defer src="scripts/site.js"></script>
+
+    <meta property="og:title" content="Crochet Creations — Handmade Crochet"/>
+    <meta property="og:description" content="Cute handmade crochet animals, flowers and gifts."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="assets/wireframe.png"/>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css" />
+
 </head>
 <body>
-    <h1>Crochet Artesanias</h1>
+   <header>
+    <div class="logo">Crochet Creations</div>
+    <nav>
+      <ul>
+        <li><a href="site.html">Welcome</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section>
-    <h2>1. Site Name</h2>
-    <p><strong>Name:</strong> Crochet Creations</p>
-    <p><strong>Reason:</strong> The name represents my grandmother's passion for creating handmade crochet pieces that bring warmth and joy to others.</p>
+  <section class="hero">
+    <h1>Welcome!</h1>
+    <p>Discover beautiful, handmade crochet pieces inspired by love and tradition.</p>
   </section>
 
   <section>
-    <h2>2. Site Purpose</h2>
-    <p>
-      The purpose of this website is to showcase and sell my grandmother's crochet work. 
-      It will feature a home page introducing her art, a product gallery with descriptions and prices, 
-      and a contact page where visitors can place orders or ask questions.
-    </p>
+    <h2>Featured Creations</h2>
+    <div id="featured" class="cards"></div>
   </section>
 
-  <section>
-    <h2>3. Scenarios</h2>
-    <ul>
-      <li>How can I contact your grandmother to order a custom crochet animal?</li>
-      <li>Where can I see photos and prices of her crochet products?</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>4. Color Schema</h2>
-    <p><strong>Main Color:</strong> Light Pink (#f8c8dc) — used for backgrounds, borders, and highlights.</p>
-    <p><strong>Accent Color:</strong> Soft Orange (#f7a072) — used for titles and buttons.</p>
-    <p><strong>Text Color:</strong> Dark Gray (#333333) — used for body text.</p>
-  </section>
-
-  <section>
-    <h2>5. Typography</h2>
-    <p><strong>Font:</strong> Poppins, sans-serif</p>
-    <p>This font is clean, modern, and easy to read. It will be used for all text elements to keep the site simple and friendly.</p>
-  </section>
-
-        <section id="wireframes">
-            <h2>Wireframes</h2>
-            <img src="images/wiframe.png" alt="Wireframe" width="300" height="300" loading="lazy">
-        </section>
-
-    <footer>
-          <p>©2025 Crochet Creations<span id="currentyear"></span> 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>
+  <footer class="site-footer">
+    <div class="container">
+     <p>©2025 Crochet Creations<span id="currentyear"></span> 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>
           <p id="lastModified"></p>
-    </footer>
+    </div>
+  </footer>
 </body>
 </html>
