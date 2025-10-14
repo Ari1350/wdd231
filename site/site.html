@@ -22,7 +22,8 @@
 </head>
 <body>
    <header>
-    <div class="logo">Crochet Creations</div>
+    <h1>Crochet Creations</h1>
+    <button id="menu-toggle" aria-label="Toggle menu">☰</button>
     <nav>
       <ul>
         <li><a href="site.html">Welcome</a></li>
@@ -32,19 +33,39 @@
     </nav>
   </header>
 <main>
-  <h1>Crochet Creations</h1>
-  <section class="hero">
-    <p>Discover beautiful, handmade crochet pieces inspired by love and tradition.</p>
-  </section>
+    <section>
+      <h2>Welcome!</h2>
+      <p>Explore our handmade crochet gifts and decorations.</p>
+    </section>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
   <section>
-    <h2>Featured Creations</h2>
+  <h2>Featured Creations</h2>
+  <figure>
     <img src="images/1.webp" alt="Crochet Cow" loading="lazy">
+    <figcaption>Cute crochet cow</figcaption>
+  </figure>
+  <figure>
     <img src="images/2.webp" alt="Crochet Chick" loading="lazy">
+    <figcaption>Yellow crochet chick</figcaption>
+  </figure>
+  <figure>
     <img src="images/3.webp" alt="Crochet Bee" loading="lazy">
+    <figcaption>Bee made with soft yarn</figcaption>
+  </figure>
+  <figure>
     <img src="images/4.webp" alt="Crochet Capybara" loading="lazy">
-  </section>
-</main>
+    <figcaption>Adorable crochet capybara</figcaption>
+  </figure>
+</section>
+
   <footer class="site-footer">
     <div class="container">
       <p>© <span id="currentyear"></span> Crochet Creations 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>

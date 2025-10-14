@@ -40,5 +40,43 @@
     "description": "Handmade crochet tulips. Made with love, perfect for a special occasion or a gift.",
     "image": "images/5.webp",
     "address": "Santa Cruz, Bolivia"
+  },
+  { "title": "Crochet Bunny",
+   "description": "Soft bunny with pink details.", 
+   "image": "images/bunny.webp", "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Bear",
+   "description": "Classic bear made from wool.", 
+   "image": "images/bear.webp", "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Elephant",
+   "description": "Small gray elephant plushie.", 
+   "image": "images/elephant.webp",
+    "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Dog", 
+  "description": "Cute puppy made with soft yarn.", 
+  "image": "images/dog.webp", 
+  "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Cat", 
+  "description": "Lovely kitty with blue eyes.",
+   "image": "images/cat.webp",
+    "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Duck",
+   "description": "Little yellow duck for children.",
+    "image": "images/duck.webp", 
+    "address": "Santa Cruz, Bolivia" 
+  },
+  { "title": "Crochet Panda",
+   "description": "Cute panda in black and white.",
+    "image": "images/panda.webp", 
+    "address": "Santa Cruz, Bolivia"
+  },
+  { "title": "Crochet Koala",
+   "description": "Gray koala plush with a big nose.",
+    "image": "images/koala.webp", 
+    "address": "Santa Cruz, Bolivia" 
   }
 ]

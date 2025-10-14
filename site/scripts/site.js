@@ -6,10 +6,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastModEl = document.getElementById("lastModified");
   if (lastModEl) lastModEl.textContent = `Last modified: ${document.lastModified}`;
 
+  const menuToggle = document.getElementById("menu-toggle");
+  const navList = document.querySelector("nav ul");
+  if (menuToggle && navList) {
+    menuToggle.addEventListener("click", () => {
+      navList.classList.toggle("active");
+    });
+};
+
   if (document.getElementById("featured")) loadFeatured();
   if (document.getElementById("products")) loadProducts();
   if (document.getElementById("contactForm")) handleForm();
+
+  setupModal();
 });
+
+function setupModal() {
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modal-body");
+  const closeModal = document.getElementById("closeModal");
+
+  if (!modal || !modalBody || !closeModal) return;
+
+  closeModal.addEventListener("click", () => modal.style.display = "none");
+  window.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  window.openModal = (item) => {
+    modalBody.innerHTML = `
+      <h2>${item.title}</h2>
+      <img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:8px;">
+      <p>${item.description}</p>
+      <p><strong>Address:</strong> ${item.address}</p>
+    `;
+    modal.style.display = "flex";
+  };
+}
 
 async function loadFeatured() {
   try {
@@ -18,7 +51,7 @@ async function loadFeatured() {
     const featured = document.getElementById("featured");
     if (!featured) return;
 
-    data.forEach(item => {
+    data.slice(0, 4).forEach(item => {
       const card = createCard(item);
       featured.appendChild(card);
     });
@@ -40,10 +73,14 @@ async function loadProducts() {
       items.forEach(item => list.appendChild(createCard(item)));
     }
 
-    render(data);
+    const lastSearch = localStorage.getItem("lastSearch") || "";
+    search.value = lastSearch;
+    const filteredInit = data.filter(d => d.title.toLowerCase().includes(lastSearch.toLowerCase()));
+    render(filteredInit.length ? filteredInit : data);
 
     search.addEventListener("input", e => {
       const term = e.target.value.toLowerCase();
+      localStorage.setItem("lastSearch", term); // Guarda búsqueda
       const filtered = data.filter(d => d.title.toLowerCase().includes(term));
       render(filtered);
     });
@@ -61,8 +98,12 @@ function createCard(item) {
       <h3>${item.title}</h3>
       <p>${item.description}</p>
       <p><strong>Address:</strong> ${item.address}</p>
+      <button class="view-details">View Details</button>
     </div>
   `;
+
+  const btn = div.querySelector(".view-details");
+  if (btn) btn.addEventListener("click", () => openModal(item)); // abre modal
   return div;
 }
 
