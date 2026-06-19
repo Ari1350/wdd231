@@ -1,19 +1,19 @@
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  background-color:  #fffafc;
- color: #333333; 
+  background-color: #E2F0D9; /* Verde pastel de fondo (--baby) */
+  color: #1b4d2e;            /* Texto verde oscuro (--dark) */
   padding: 20px; 
   line-height: 1.6;
 }
 
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
-  color: #f7a072;
+  color: #1b4d2e;            /* Títulos en verde oscuro (--dark) */
 }
 
 header {
-  background-color: #f8c8dc;
+  background-color: #C1E1C1; /* Barra principal en verde suave (--pastel) */
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333333;
+  color: #1b4d2e;            /* Logotipo en verde oscuro */
 }
 
 nav ul {
@@ -35,17 +35,27 @@ nav ul {
 }
 
 nav ul li a {
-  color: #f7a072;
+  color: #1b4d2e;            /* Enlaces en verde oscuro */
   text-decoration: none;
   font-size: 1.2rem;
 }
 
-nav ul li a:hover {
-  color: #f58b55; 
+nav ul li a:hover, 
+nav ul li a.active { 
+  color: #50C878;            /* Cambio a verde esmeralda al pasar el mouse (--emerald) */
+}
+
+#menu-toggle { 
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1b4d2e;
 }
 
 .hero {
-  background-color: #f7a072;
+  background-color: #50C878; /* Sección de bienvenida en verde esmeralda (--emerald) */
   color: white;
   text-align: center;
   padding: 2rem 1rem;
@@ -54,7 +64,7 @@ nav ul li a:hover {
 
 section {
   background-color: white;
-  border: 2px solid #f8c8dc; 
+  border: 2px solid #C1E1C1; /* Bordes en verde suave (--pastel) */
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 20px;
@@ -81,7 +91,7 @@ section img {
 
 .card {
   background-color: white;
-  border: 2px solid #f8c8dc; 
+  border: 2px solid #C1E1C1; /* Bordes de tarjeta en verde suave (--pastel) */
   padding: 1rem;
   border-radius: 10px; 
   width: 280px;
@@ -97,12 +107,23 @@ section img {
   transform: scale(1.03); 
 }
 
-.card img {
+.card img, .modal-image { 
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 0.8rem;
+}
+
+/* Buscador de productos */
+#search {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #C1E1C1;  /* Borde del buscador en verde suave */
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  color: #1b4d2e;
 }
 
 .formulario {
@@ -111,7 +132,7 @@ section img {
   padding: 2rem;
   border-radius: 10px;
   background-color: white;
-  border: 2px solid #f8c8dc; 
+  border: 2px solid #C1E1C1; /* Borde de formulario en verde suave */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -132,23 +153,24 @@ form textarea {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #C1E1C1;  /* Borde de campos de texto */
   border-radius: 6px;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   box-sizing: border-box;
+  color: #1b4d2e;
 }
 
 form textarea {
   resize: vertical;
 }
 
-form button {
+form button, .view-details-btn { 
   width: 100%;
   padding: 0.85rem;
   border: none;
   border-radius: 6px;
-  background-color: #ce4a87;
+  background-color: #1b4d2e; /* Botón principal en verde oscuro (--dark) */
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -156,8 +178,8 @@ form button {
   transition: background 0.3s ease;
 }
 
-form button:hover {
-  background-color: #555500;
+form button:hover, .view-details-btn:hover {
+  background-color: #50C878; /* Hover de botones cambia a verde esmeralda (--emerald) */
 }
 
 #output {
@@ -165,11 +187,12 @@ form button:hover {
   padding: 1rem;
   border-radius: 6px;
   background-color: #f0f0f0;
+  color: #1b4d2e;
 }
 
 footer {
-  background-color: #f8c8dc; 
-  color: #333333; 
+  background-color: #C1E1C1; /* Fondo de pie de página en verde suave */
+  color: #1b4d2e; 
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
@@ -177,7 +200,7 @@ footer {
 }
 
 .site-footer {
-  background-color: #f8f8f8;
+  background-color: #C1E1C1; /* Fondo secundario de pie de página en verde suave */
   padding: 20px;
   text-align: center;
 }
@@ -197,7 +220,7 @@ footer {
   nav ul {
     display: none;
     flex-direction: column;
-    background-color: #f8c8dc;
+    background-color: #C1E1C1; /* Menú móvil desplegable en verde suave */
     padding: 1rem;
     border-radius: 10px;
     margin: 0;
@@ -224,7 +247,7 @@ footer {
 }
 
 .modal-content {
-  background: #fffafc;
+  background: white;
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
@@ -237,5 +260,5 @@ footer {
   float: right;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #ce4a87;
+  color: #1b4d2e;            /* Botón de cierre en verde oscuro */
 }

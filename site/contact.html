@@ -22,25 +22,41 @@
       </ul>
     </nav>
   </header>
-  <main>
-      <h1>Crochet Creations</h1>
-        <section class="formulario">
-          <h2>Contact Us</h2>
-          <form id="contactForm">
-            <label for="name">Name:</label>
-            <input id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input id="email" name="email" type="email" required>
+    <main>
+      <header style="margin-top: 1rem; background-color: #50C878;">
+        <span class="logo" style="color: white; font-size: 1.2rem;">Panel Privado de la Dueña 🛠️</span>
+        <nav>
+          <ul>
+            <li><a href="contact.html" class="active" style="color: white;">1. Anotar Pedido</a></li>
+            <li><a href="pedidos.html" style="color: #1b4d2e;">2. Ver Lista de Pedidos</a></li>
+          </ul>
+        </nav>
+      </header>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+      <section class="formulario">
+        <h2>Registro de Nuevo Pedido</h2>
+        <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Escribe los datos de la venta coordinada por WhatsApp para guardarla en el sistema.</p>
+        
+        <form id="adminForm">
+          <label for="clienteName">Nombre del Cliente:</label>
+          <input type="text" id="clienteName" required placeholder="Ej. María Pérez">
 
-            <button type="submit">Send</button>
-          </form>
+          <label for="productoSelect">Producto Solicitado:</label>
+          <input type="text" id="productoSelect" required placeholder="Ej. Vaquita de Crochet">
 
-          <div id="output"></div>
-       </section>
+          <label for="metodoPago">Método de Pago:</label>
+          <input type="text" id="metodoPago" required placeholder="Ej. QR o Efectivo">
+
+          <label for="estadoPedido">Estado Inicial del Pago:</label>
+          <input type="text" id="estadoPedido" required placeholder="Ej. Realizado o Pendiente">
+
+          <button type="submit">Guardar Pedido en Lista</button>
+        </form>
+      </section>
+    </main>
+
+
 </main>
   <footer class="site-footer">
     <div class="container">

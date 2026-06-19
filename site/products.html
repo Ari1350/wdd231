@@ -1,42 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Products | Crochet Creations</title>
-  <meta name="description" content="Browse our handmade crochet products.">
-  <link rel="stylesheet" href="styles/site.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <script defer src="scripts/site.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Products | Crochet Creations</title>
+    <meta name="description" content="Browse our complete catalog of handmade crochet products, animals, and plushies.">
+    <link rel="stylesheet" href="styles/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <script defer src="scripts/site.js"></script>
 </head>
 <body>
   <header>
-    <div class="logo">Crochet Creations</div>
-    <nav>
-      <ul>
-        <li><a href="site.html">Welcome</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-<main>
-      <h1>Crochet Creations</h1>
-  <section>
-    <h2>Our Products</h2>
-    <input type="search" id="search" placeholder="Search products...">
-    <div id="products" class="cards"></div>
-  </section>
-</main>
+  <span class="logo">Crochet Creations</span>
+  <button id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+  <nav>
+    <ul>
+      <li><a href="site.html">Inicio</a></li>
+      <li><a href="products.html">Catálogo de Peluches</a></li>
+    </ul>
+  </nav>
+</header>
 
- <footer class="site-footer">
+
+  <main>
+    <section class="products-container">
+      <h1>Our Products</h1>
+      <p class="search-instructions">Use the search bar below to filter through our available handcrafted plushies.</p>
+      
+      <!-- Contenedor del Buscador Estilizado -->
+      <div class="search-box">
+        <input type="search" id="search" placeholder="🔍 Search products by name..." aria-label="Search products">
+      </div>
+
+      <!-- Aquí se inyectarán las tarjetas dinámicamente con tu site.js -->
+      <div id="products" class="cards"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-      <p>© <span id="currentyear"></span> Crochet Creations 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>
+      <p>© <span id="currentyear"></span> Crochet Creations 🌸 Guadalupe Arias 🌸, Bolivia 🇧🇴</p>
       <p id="lastModified"></p>
     </div>
   </footer>
-
 </body>
 </html>
+

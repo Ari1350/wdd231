@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Crochet Creations</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script defer src="scripts/admin.js"></script>
+</head>
+<body>
+  <header>
+    <span class="logo">Crochet - Panel Administrativo 🛠️</span>
+    <nav>
+      <ul>
+        <li><a href="site.html">Ir a la Tienda</a></li>
+        <li><a href="admin.html" class="active">Control de Pedidos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="formulario">
+      <h2>Registrar / Actualizar Pedido</h2>
+      <p style="color: #1b4d2e; margin-bottom: 1rem;">Llene los datos de la venta coordinada por WhatsApp para guardarla en el sistema.</p>
+      
+      <form id="adminForm">
+        <label for="clienteName">Nombre del Cliente:</label>
+        <input type="text" id="clienteName" required placeholder="Ej. María Sangüesa">
+
+        <label for="productoSelect">Producto Vendido:</label>
+        <select id="productoSelect" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e;" required>
+            <option value="Vaquita de Crochet">Vaquita de Crochet (Bs. 45)</option>
+            <option value="Pollito de Crochet">Pollito de Crochet (Bs. 25)</option>
+            <option value="Abejita de Crochet">Abejita de Crochet (Bs. 30)</option>
+            <option value="Carpincho de Crochet">Carpincho de Crochet (Bs. 50)</option>
+        </select>
+
+        <label for="metodoPago">Método de Pago:</label>
+        <select id="metodoPago" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e;" required>
+            <option value="QR">QR BCP / Mercantil</option>
+            <option value="Efectivo">Efectivo (Entrega)</option>
+            <option value="Transferencia">Transferencia Bancaria</option>
+        </select>
+
+        <label for="estadoPedido">Estado del Pago:</label>
+        <select id="estadoPedido" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e;" required>
+            <option value="Pendiente">⏳ Pendiente</option>
+            <option value="Cancelado">✅ Cancelado / Pagado</option>
+            <option value="Rechazado">❌ Fallido / Cancelado</option>
+        </select>
+
+        <button type="submit">Guardar en Base de Datos</button>
+      </form>
+    </section>
+
+    <section style="background-color: white; overflow-x: auto;">
+        <h2>Historial de Ventas Organizadas</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; text-align: left;">
+            <thead>
+                <tr style="background-color: #C1E1C1; color: #1b4d2e;">
+                    <th style="padding: 10px; border: 1px solid #C1E1C1;">Cliente</th>
+                    <th style="padding: 10px; border: 1px solid #C1E1C1;">Producto</th>
+                    <th style="padding: 10px; border: 1px solid #C1E1C1;">Método</th>
+                    <th style="padding: 10px; border: 1px solid #C1E1C1;">Estado</th>
+                    <th style="padding: 10px; border: 1px solid #C1E1C1;">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tablaPedidos">
+            </tbody>
+        </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Crochet Creations 🌸 Panel de Control de Software 🌸</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,42 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crochet Creations</title>
-    <meta name="description" content="ute handmade crochet animals, flowers and gifts, perfect for special occasions or as thoughtful presents. Handmade with love in Santa Cruz, Bolivia..">
+    <title>Crochet Creations — Handmade Crochet</title>
+    <meta name="description" content="Cute handmade crochet animals, flowers and gifts, perfect for special occasions or as thoughtful presents. Handmade with love in Santa Cruz, Bolivia.">
     <meta name="author" content="Guadalupe Arias">
     <link rel="stylesheet" href="styles/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script defer src="scripts/site.js"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <meta property="og:title" content="Crochet Creations — Handmade Crochet">
     <meta property="og:description" content="Cute handmade crochet animals, flowers and gifts.">
     <meta property="og:image" content="https://ari1350.github.io/wdd231/site/favicon.ico">
     <meta property="og:url" content="https://ari1350.github.io/wdd231/site/site.html">
     <meta property="og:type" content="website">
-
 </head>
 <body>
-   <header>
-    <h2>Crochet Creations</h2>
-    <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+  <header>
+    <span class="logo">Crochet Creations</span>
+    <button id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
     <nav>
       <ul>
-        <li><a href="site.html">Welcome</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="site.html" class="active">Inicio</a></li>
+        <li><a href="products.html">Catálogo de Peluches</a></li>
       </ul>
     </nav>
   </header>
-<main>
+
+  <main>
+    <!-- Sección de Bienvenida Principal -->
+    <section class="hero">
+       <h1>Creaciones de ganchillo hechas a mano</h1>
+       <p>Descubre nuestras hermosas colecciones de regalos hechos a mano, animales personalizados y decoraciones elaboradas con amor en Bolivia.</p>
+    </section>
+
     <section>
-          <h1>Crochet Creations</h1>
-      <h2>Welcome!</h2>
-      <p>Explore our handmade crochet gifts and decorations.</p>
+      <h2>Creaciones destacadas</h2>
+      <div id="featured" class="cards"></div> 
     </section>
   </main>
 
@@ -47,29 +50,9 @@
     </div>
   </div>
 
-  <section>
-  <h2>Featured Creations</h2>
-  <figure>
-    <img src="images/1.webp" alt="Crochet Cow" loading="lazy">
-    <figcaption>Cute crochet cow</figcaption>
-  </figure>
-  <figure>
-    <img src="images/2.webp" alt="Crochet Chick" loading="lazy">
-    <figcaption>Yellow crochet chick</figcaption>
-  </figure>
-  <figure>
-    <img src="images/3.webp" alt="Crochet Bee" loading="lazy">
-    <figcaption>Bee made with soft yarn</figcaption>
-  </figure>
-  <figure>
-    <img src="images/4.webp" alt="Crochet Capybara" loading="lazy">
-    <figcaption>Adorable crochet capybara</figcaption>
-  </figure>
-</section>
-
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="currentyear"></span> Crochet Creations 🌸Guadalupe Arias🌸, Bolivia🇧🇴</p>
+      <p>© <span id="currentyear"></span> Crochet Creations 🌸 Guadalupe Arias 🌸, Bolivia 🇧🇴</p>
       <p id="lastModified"></p>
     </div>
   </footer>

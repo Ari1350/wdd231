@@ -1,82 +1,92 @@
 [  
   {
-    "title": "Crochet Cow",
-    "description": "Handmade crochet cow. Made with love, perfect for a special occasion or a gift.",
+    "title": "Vaquita de Crochet",
+    "description": "Hermosa vaquita tejida a mano con hilo suave. Perfecta para un regalo especial.",
     "image": "images/1.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 45.00
   },
   {
-    "title": "Crochet Chick",
-    "description": "Handmade crochet chick. Made with love, perfect for a special occasion or a gift.",
+    "title": "Pollito de Crochet",
+    "description": "Lindo pollito amarillo tejido a mano. Ideal para decoración o regalo.",
     "image": "images/2.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 25.00
   },
   {
-    "title": "Crochet Bee",
-    "description": "Handmade crochet bee. Made with love, perfect for a special occasion or a gift.",
+    "title": "Abejita de Crochet",
+    "description": "Simpática abejita tejida con lana premium muy suave.",
     "image": "images/3.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 30.00
   },
   {
-    "title": "Crochet Capybara",
-    "description": "Handmade crochet capybara. Made with love, perfect for a special occasion or a gift.",
+    "title": "Carpincho de Crochet",
+    "description": "Adorable y tierno carpincho de crochet, el peluche del momento.",
     "image": "images/4.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 50.00
   },
   {
-    "title": "Crochet Sunflowers",
-    "description": "Handmade crochet sunflowers. Made with love, perfect for a special occasion or a gift.",
+    "title": "Girasoles de Crochet",
+    "description": "Girasoles tejidos a mano que nunca se marchitan. Hechos con amor.",
     "image": "images/6.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 35.00
   },
   {
-    "title": "Crochet Roses",
-    "description": "Handmade crochet roses. Made with love, perfect for a special occasion or a gift.",
+    "title": "Rosas de Crochet",
+    "description": "Elegantes rosas tejidas a mano, el detalle perfecto para regalar.",
     "image": "images/7.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 40.00
   },
   {
-    "title": "Crochet Tulips",
-    "description": "Handmade crochet tulips. Made with love, perfect for a special occasion or a gift.",
+    "title": "Tulipanes de Crochet",
+    "description": "Tulipanes de crochet en tonos hermosos para decorar cualquier espacio.",
     "image": "images/5.webp",
-    "address": "Santa Cruz, Bolivia"
+    "price": 35.00
   },
-  { "title": "Crochet Bunny",
-   "description": "Soft bunny with pink details.", 
-   "image": "images/bunny.webp", "address": "Santa Cruz, Bolivia" 
+  { 
+    "title": "Conejo de Crochet",
+    "description": "Suave conejito tejido con delicados detalles en rosa.", 
+    "image": "images/bunny.webp", 
+    "price": 45.00 
   },
-  { "title": "Crochet Bear",
-   "description": "Classic bear made from wool.", 
-   "image": "images/bear.webp", "address": "Santa Cruz, Bolivia" 
+  { 
+    "title": "Osito de Crochet",
+    "description": "Clásico oso de peluche tejido a mano con lana de alta calidad.", 
+    "image": "images/bear.webp", 
+    "price": 45.00 
   },
-  { "title": "Crochet Elephant",
-   "description": "Small gray elephant plushie.", 
-   "image": "images/elephant.webp",
-    "address": "Santa Cruz, Bolivia" 
+  { 
+    "title": "Elefante de Crochet",
+    "description": "Pequeño elefante gris de crochet, muy tierno y blando.", 
+    "image": "images/elephant.webp",
+    "price": 55.00 
   },
-  { "title": "Crochet Dog", 
-  "description": "Cute puppy made with soft yarn.", 
-  "image": "images/dog.webp", 
-  "address": "Santa Cruz, Bolivia" 
+  { 
+    "title": "Perrito de Crochet", 
+    "description": "Lindo cachorro tejido con hilos suaves de algodón.", 
+    "image": "images/dog.webp", 
+    "price": 50.00 
   },
-  { "title": "Crochet Cat", 
-  "description": "Lovely kitty with blue eyes.",
-   "image": "images/cat.webp",
-    "address": "Santa Cruz, Bolivia" 
+  { 
+    "title": "Gatito de Crochet", 
+    "description": "Precioso gatito tejido con llamativos ojos azules.",
+    "image": "images/cat.webp",
+    "price": 50.00 
   },
-  { "title": "Crochet Duck",
-   "description": "Little yellow duck for children.",
+  { 
+    "title": "Patito de Crochet",
+    "description": "Pequeño patito amarillo ideal para niños pequeños.",
     "image": "images/duck.webp", 
-    "address": "Santa Cruz, Bolivia" 
+    "price": 25.00 
   },
-  { "title": "Crochet Panda",
-   "description": "Cute panda in black and white.",
+  { 
+    "title": "Panda de Crochet",
+    "description": "Tierno osito panda tejido en los clásicos blanco y negro.",
     "image": "images/panda.webp", 
-    "address": "Santa Cruz, Bolivia"
+    "price": 55.00
   },
-  { "title": "Crochet Koala",
-   "description": "Gray koala plush with a big nose.",
+  { 
+    "title": "Koala de Crochet",
+    "description": "Koala gris de crochet con una gran y tierna nariz.",
     "image": "images/koala.webp", 
-    "address": "Santa Cruz, Bolivia" 
+    "price": 55.00 
   }
 ]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pedidos Activos</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script defer src="scripts/admin.js"></script>
+</head>
+<body>
+  <header style="background-color: #50C878;">
+    <span class="logo" style="color: white; font-size: 1.2rem;">Panel Privado de la Dueña 🛠️</span>
+    <nav>
+      <ul>
+        <li><a href="contact.html" style="color: #1b4d2e;">1. Anotar Pedido</a></li>
+        <li><a href="pedidos.html" class="active" style="color: white;">2. Ver Lista de Pedidos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section style="background-color: white; overflow-x: auto; margin-top: 2rem;">
+        <h2>Pedidos y Entregas Pendientes</h2>
+        <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Haga clic en el botón "Entregado" para archivar y limpiar el pedido una vez finalizado.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background-color: #C1E1C1; color: #1b4d2e;">
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Cliente</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Producto</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Método</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Estado</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1; text-align: center;">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tablaPedidos">
+            </tbody>
+        </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Control de Entregas — Crochet Creations</p>
+    </div>
+  </footer>
+</body>
+</html>
