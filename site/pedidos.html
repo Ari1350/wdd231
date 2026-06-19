@@ -40,6 +40,30 @@
             </tbody>
         </table>
     </section>
+
+    <main>
+  <section style="background-color: white; overflow-x: auto; margin-top: 2rem;">
+      <h2>Pedidos y Entregas Pendientes</h2>
+      <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Haga clic en el botón "Entregado" para archivar y limpiar el pedido una vez finalizado.</p>
+      
+      <!-- NUEVO BOTÓN DE EXPORTACIÓN PARA LA DUEÑA/PROGRAMADORA -->
+      <button id="btnExportar" style="margin-bottom: 1.5rem; padding: 10px 15px; background-color: #50C878; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+          📥 Descargar Respaldo para pgAdmin (.SQL)
+      </button>
+      
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+<!-- CONSOLA EXCLUSIVA PARA LA PROGRAMADORA -->
+<section style="background-color: #1e1e1e; border: 2px solid #333; border-radius: 10px; padding: 20px; margin-top: 3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+    <h2 style="color: #50C878; font-family: monospace; margin-bottom: 0.5rem;">💻 Consola del Desarrollador (Vista Base de Datos)</h2>
+    <p style="color: #aaa; font-family: monospace; font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Esta sección simula la salida de datos brutos de PostgreSQL. Muestra el historial completo de inserciones, incluyendo los pedidos que la dueña ya marcó como entregados.
+    </p>
+
+    <pre id="consolaProgramador" style="background-color: #000; color: #00ff00; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.4; border: 1px solid #50C878; max-height: 400px;"></pre>
+</section>
+
+
   </main>
 
   <footer class="site-footer">
