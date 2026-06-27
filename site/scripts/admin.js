@@ -121,3 +121,20 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTablaOperativa();
     renderTablaHistorial();
 });
+
+async function guardarContacto() {
+    const datos = {
+        nombre: document.getElementById('nombre').value,
+        celular: document.getElementById('celular').value,
+        direccion: document.getElementById('direccion').value
+    };
+
+    const respuesta = await fetch('http://127.0.0.1:5000/registrar_cliente', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(datos)
+    });
+
+    const resultado = await respuesta.json();
+    alert(resultado.mensaje || "Error al guardar");
+}
