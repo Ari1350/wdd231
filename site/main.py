@@ -162,3 +162,24 @@ def registrar_pedido():
         return jsonify({"mensaje": "🚀 Pedido generado en la base de datos"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+    
+# RUTA PARA DETALLE DE PEDIDO
+
+@app.route('/obtener_historial', methods=['GET'])
+def obtener_historial():
+    try:
+        with conectar_sqlite() as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            # Consulta DML con JOIN para unir Cliente y Pago (Unidad IV)
+            query = """
+                SELECT C.Nombre, P.monto, P.fecha_pago, P.estado_pago 
+                FROM Cliente C
+                JOIN Pedido Pe ON C.id_cliente = Pe.id_cliente
+                JOIN Pago P ON Pe.ID_Pedido = P.id_pedido
+            """
+            cursor.execute(query)
+            historial = [dict(row) for row in cursor.fetchall()]
+        return jsonify(historial), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

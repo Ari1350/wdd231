@@ -138,3 +138,20 @@ async function guardarContacto() {
     const resultado = await respuesta.json();
     alert(resultado.mensaje || "Error al guardar");
 }
+
+async function cargarHistorial() {
+    const res = await fetch('http://127.0.0.1:5000/obtener_historial');
+    const datos = await res.json();
+    const tabla = document.getElementById('cuerpo-tabla-historial'); 
+    
+    datos.forEach(venta => {
+        tabla.innerHTML += `
+            <tr>
+                <td>${venta.Nombre}</td>
+                <td>${venta.monto} Bs.</td>
+                <td>${venta.fecha_pago}</td>
+                <td>${venta.estado_pago}</td>
+            </tr>`;
+    });
+}
+window.onload = cargarHistorial;
