@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Pedidos | Panel Administrativo</title>
     <link rel="stylesheet" href="styles/site.css">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <script defer src="scripts/admin.js"></script>
 </head>
 <body>
@@ -17,6 +14,7 @@
       <ul>
         <li><a href="contact.html" class="active" style="color: white;">1. Anotar Pedido</a></li>
         <li><a href="pedidos.html" style="color: #1b4d2e;">2. Lista de Entregas</a></li>
+        <li><a href="historial.html" style="color: #1b4d2e;">3. Balance Histórico</a></li>
       </ul>
     </nav>
   </header>
@@ -24,53 +22,87 @@
   <main>
     <section class="formulario" style="margin-top: 2rem;">
       <h2>Registro de Nueva Venta</h2>
-      <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Seleccione los datos de la orden coordinada por WhatsApp para ingresarla al sistema de control.</p>
+      <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Ingrese los datos de la orden. Los campos corresponden a los atributos obligatorios de sus 6 tablas en Oracle.</p>
       
       <form id="adminForm">
+        <!-- 1. ATRIBUTOS DE LA TABLA: CLIENTE -->
         <div class="form-group">
-          <label for="clienteName">Nombre del Cliente:</label>
-          <input type="text" id="clienteName" required placeholder="Ej. María Pérez">
+          <label for="clienteName">Nombre Completo del Cliente:</label>
+          <input type="text" id="clienteName" required placeholder="Ej. María Sangüesa">
         </div>
 
         <div class="form-group">
-          <label for="productoSelect">Producto Vendido:</label>
-          <select id="productoSelect" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; font-family: inherit; font-size: 1rem; background-color: white;" required>
-              <option value="Vaquita de Crochet">Vaquita de Crochet (Bs. 45.00)</option>
-              <option value="Pollito de Crochet">Pollito de Crochet (Bs. 25.00)</option>
-              <option value="Abejita de Crochet">Abejita de Crochet (Bs. 30.00)</option>
-              <option value="Carpincho de Crochet">Carpincho de Crochet (Bs. 50.00)</option>
-              <option value="Girasoles de Crochet">Girasoles de Crochet (Bs. 35.00)</option>
-              <option value="Rosas de Crochet">Rosas de Crochet (Bs. 40.00)</option>
-              <option value="Tulipanes de Crochet">Tulipanes de Crochet (Bs. 35.00)</option>
+          <label for="clienteCelular">Número de Celular / WhatsApp:</label>
+          <input type="text" id="clienteCelular" required placeholder="Ej. 71020301">
+        </div>
+
+        <div class="form-group">
+          <label for="clienteDireccion">Dirección de Envío / Domicilio:</label>
+          <input type="text" id="clienteDireccion" required placeholder="Ej. Av. Bush, 2do Anillo">
+        </div>
+
+        <!-- 2. ATRIBUTOS DE LA TABLA: PRODUCTO -->
+        <div class="form-group">
+          <label for="productoSelect">Producto Solicitado:</label>
+          <select id="productoSelect" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; background-color: white;" required>
+              <option value="Vaquita de Crochet" data-precio="45.00">Vaquita de Crochet (Bs. 45.00)</option>
+              <option value="Pollito de Crochet" data-precio="25.00">Pollito de Crochet (Bs. 25.00)</option>
+              <option value="Abejita de Crochet" data-precio="30.00">Abejita de Crochet (Bs. 30.00)</option>
+              <option value="Carpincho de Crochet" data-precio="50.00">Carpincho de Crochet (Bs. 50.00)</option>
+              <option value="Girasoles de Crochet" data-precio="35.00">Girasoles de Crochet (Bs. 35.00)</option>
+              <option value="Rosas de Crochet" data-precio="40.00">Rosas de Crochet (Bs. 40.00)</option>
+              <option value="Tulipanes de Crochet" data-precio="35.00">Tulipanes de Crochet (Bs. 35.00)</option>
+              <option value="Conejo de Crochet" data-precio="45.00">Conejo de Crochet (Bs. 45.00)</option>
+              <option value="Osito de Crochet" data-precio="45.00">Osito de Crochet (Bs. 45.00)</option>
+              <option value="Elefante de Crochet" data-precio="55.00">Elefante de Crochet (Bs. 55.00)</option>
+              <option value="Perrito de Crochet" data-precio="50.00">Perrito de Crochet (Bs. 50.00)</option>
+              <option value="Gatito de Crochet" data-precio="50.00">Gatito de Crochet (Bs. 50.00)</option>
+              <option value="Patito de Crochet" data-precio="25.00">Patito de Crochet (Bs. 25.00)</option>
+              <option value="Panda de Crochet" data-precio="55.00">Panda de Crochet (Bs. 55.00)</option>
+              <option value="Koala de Crochet" data-precio="55.00">Koala de Crochet (Bs. 55.00)</option>
           </select>
         </div>
 
+        <!-- 3. ATRIBUTOS DE LA TABLA: DETALLE_PEDIDO -->
         <div class="form-group">
-          <label for="metodoPago">Método de Pago:</label>
-          <select id="metodoPago" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; font-family: inherit; font-size: 1rem; background-color: white;" required>
-              <option value="QR">Código QR (BCP / Mercantil)</option>
-              <option value="Efectivo">Efectivo (Contra entrega)</option>
-              <option value="Transferencia">Transferencia Bancaria</option>
+          <label for="txtCantidad">Cantidad (Unidades):</label>
+          <input type="number" id="txtCantidad" min="1" value="1" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; box-sizing: border-box; color: #1b4d2e;">
+        </div>
+
+        <!-- 4. ATRIBUTOS DE LA TABLA: METODO_DE_PAGO (Acorde al CHECK de Oracle) -->
+        <div class="form-group">
+          <label for="metodoPago">Método de Pago Seleccionado:</label>
+          <select id="metodoPago" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; background-color: white;" required>
+              <option value="QR">QR</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia">Transferencia</option>
           </select>
         </div>
 
+        <!-- 5. ATRIBUTOS DE LA TABLA: PAGO (Acorde al CHECK de Oracle) -->
         <div class="form-group">
-          <label for="estadoPedido">Estado de la Transacción:</label>
-          <select id="estadoPedido" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; font-family: inherit; font-size: 1rem; background-color: white;" required>
-              <option value="Completado">✅ Realizado / Pagado</option>
-              <option value="Pendiente">⏳ Pendiente de Pago</option>
+          <label for="estadoPago">Estado de la Transacción Financiera:</label>
+          <select id="estadoPago" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; background-color: white;" required>
+              <option value="Completado">Completado (Dinero recibido)</option>
+              <option value="Pendiente">Pendiente (Por cobrar)</option>
+              <option value="Fallido">Fallido (Transacción rechazada)</option>
           </select>
         </div>
 
-        <button type="submit" style="background-color: #1b4d2e;">Sincronizar y Registrar Venta</button>
+        <!-- 6. ATRIBUTO DE CONTROL: ESTADO DE ENTREGA -->
+        <div class="form-group">
+          <label for="estadoEntrega">Estado Físico de la Entrega:</label>
+          <select id="estadoEntrega" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #C1E1C1; border-radius: 6px; color: #1b4d2e; background-color: white;" required>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Entregado">Entregado</option>
+              <option value="Cliente canceló el pedido">Cliente canceló el pedido</option>
+          </select>
+        </div>
+
+        <button type="submit" style="background-color: #1b4d2e;">Sincronizar y Registrar Orden</button>
       </form>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© Panel Operativo — Sistema de Gestión Relacional</p>
-    </div>
-  </footer>
 </body>
 </html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial y Balance Mensual</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script defer src="scripts/admin.js"></script>
+</head>
+<body>
+  <header style="background-color: #50C878;">
+    <span class="logo" style="color: white; font-size: 1.2rem;">Panel de Control Administrativo 🌿</span>
+    <nav>
+      <ul>
+        <li><a href="contact.html" style="color: #1b4d2e;">1. Anotar Pedido</a></li>
+        <li><a href="pedidos.html" style="color: #1b4d2e;">2. Lista de Entregas</a></li>
+        <li><a href="historial.html" class="active" style="color: white;">3. Balance Histórico</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section style="background-color: white; overflow-x: auto; margin-top: 2rem;">
+        <h2>Historial de Ventas y Balance General</h2>
+        <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Auditoría completa de transacciones del mes. Los registros guardados aquí coinciden con las tuplas físicas de la base de datos.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background-color: #1b4d2e; color: white;">
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Fecha Compra</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Fecha Entrega</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Cliente</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Producto (Cant.)</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Total Venta</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Estado Pago</th>
+                    <th style="padding: 12px; border: 1px solid #1b4d2e;">Estado Entrega</th>
+                </tr>
+            </thead>
+            <tbody id="tablaHistorial">
+                <!-- Se carga de forma acumulativa con JavaScript -->
+            </tbody>
+        </table>
+    </section>
+  </main>
+</body>
+</html>

@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Entregas Pendientes</title>
     <link rel="stylesheet" href="styles/site.css">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <script defer src="scripts/admin.js"></script>
 </head>
 <body>
@@ -17,35 +14,32 @@
       <ul>
         <li><a href="contact.html" style="color: #1b4d2e;">1. Anotar Pedido</a></li>
         <li><a href="pedidos.html" class="active" style="color: white;">2. Lista de Entregas</a></li>
+        <li><a href="historial.html" style="color: #1b4d2e;">3. Balance Histórico</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section style="background-color: white; overflow-x: auto; margin-top: 2rem; border-color: #C1E1C1;">
-        <h2>Pedidos y Entregas en Curso</h2>
-        <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Visualice el estado actual de las ventas. Presione el botón "Finalizar Entrega" para archivar el pedido una vez entregado el peluche de ganchillo al cliente.</p>
+    <section style="background-color: white; overflow-x: auto; margin-top: 2rem;">
+        <h2>Pedidos y Entregas en Curso (Pendientes)</h2>
+        <p style="color: #1b4d2e; margin-bottom: 1.5rem;">Haga clic en "Finalizar Entrega" o "Cancelar Orden" para mover el registro automáticamente al historial permanente.</p>
         
         <table style="width: 100%; border-collapse: collapse; text-align: left;">
             <thead>
                 <tr style="background-color: #C1E1C1; color: #1b4d2e;">
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Fecha Compra</th>
                     <th style="padding: 12px; border: 1px solid #C1E1C1;">Cliente</th>
-                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Producto Vendido</th>
-                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Método de Pago</th>
-                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Estado</th>
-                    <th style="padding: 12px; border: 1px solid #C1E1C1; text-align: center;">Control Operativo</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Producto (Cant.)</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Subtotal</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1;">Pago / Entrega</th>
+                    <th style="padding: 12px; border: 1px solid #C1E1C1; text-align: center;">Acciones Operativas</th>
                 </tr>
             </thead>
             <tbody id="tablaPedidos">
+                <!-- Se carga con JavaScript -->
             </tbody>
         </table>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© Panel Operativo — Sistema de Gestión Relacional</p>
-    </div>
-  </footer>
 </body>
 </html>
