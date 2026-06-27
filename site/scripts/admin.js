@@ -3,17 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const tablaPedidos = document.getElementById("tablaPedidos");
     const tablaHistorial = document.getElementById("tablaHistorial");
 
-    // Almacén maestro unificado en la memoria interna del navegador
     let historialGlobal = JSON.parse(localStorage.getItem("historial_completo_crochet")) || [];
-
-    // Obtener la fecha actual en formato Año-Mes-Día
     const obtenerFechaHoy = () => new Date().toISOString().split('T')[0];
 
-    // 1. RENDERIZAR TABLA OPERATIVA: Muestra solo los pedidos que siguen "Pendiente"
     function renderTablaOperativa() {
-        if (!tablaPedidos) return; // Si no estamos en pedidos.html, detiene la función
+        if (!tablaPedidos) return;
         tablaPedidos.innerHTML = "";
-
         const pendientes = historialGlobal.filter(p => p.estadoEntrega === "Pendiente");
 
         if (pendientes.length === 0) {
@@ -24,8 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         pendientes.forEach((pedido) => {
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid #C1E1C1";
-
-            // Encontrar el índice real en el arreglo global mapeado por su ID único
             const globalIndex = historialGlobal.findIndex(g => g.id === pedido.id);
 
             tr.innerHTML = `
@@ -42,13 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
             tablaPedidos.appendChild(tr);
         });
 
-        // Configuración de las acciones en los botones operativos de la grilla
         document.querySelectorAll(".done-btn").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = e.target.getAttribute("data-index");
                 historialGlobal[idx].estadoEntrega = "Entregado";
-                historialGlobal[idx].estadoPago = "Completado"; // Al entregarse, se marca como pagado
-                historialGlobal[idx].fechaEntrega = obtenerFechaHoy(); // Fecha automática
+                historialGlobal[idx].estadoPago = "Completado";
+                historialGlobal[idx].fechaEntrega = obtenerFechaHoy();
                 guardarYRefrescar();
             });
         });
@@ -63,9 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. RENDERIZAR HISTORIAL COMPLETO: Muestra el balance inalterable del mes
     function renderTablaHistorial() {
-        if (!tablaHistorial) return; // Si no estamos en historial.html, detiene la función
+        if (!tablaHistorial) return;
         tablaHistorial.innerHTML = "";
 
         if (historialGlobal.length === 0) {
@@ -76,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         historialGlobal.forEach((pedido) => {
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid #C1E1C1";
-            
             let colorEntrega = pedido.estadoEntrega === "Entregado" ? "#137333" : (pedido.estadoEntrega === "Pendiente" ? "#b07d00" : "#c5221f");
             let colorPago = pedido.estadoPago === "Completado" ? "#137333" : (pedido.estadoPago === "Pendiente" ? "#b07d00" : "#c5221f");
 
@@ -93,18 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Guardar en LocalStorage y redibujar las grillas operativas
     function guardarYRefrescar() {
         localStorage.setItem("historial_completo_crochet", JSON.stringify(historialGlobal));
         renderTablaOperativa();
         renderTablaHistorial();
     }
 
-    // 3. CAPTURA Y PROCESAMIENTO DEL FORMULARIO CON CÁLCULOS AUTOMÁTICOS
     if (adminForm) {
         adminForm.addEventListener("submit", (e) => {
             e.preventDefault();
-
             const selectProducto = document.getElementById("productoSelect");
             const precioUnitario = parseFloat(selectProducto.options[selectProducto.selectedIndex].dataset.precio);
             const cantidadUnidades = parseInt(document.getElementById("txtCantidad").value);
@@ -112,26 +99,25 @@ document.addEventListener("DOMContentLoaded", () => {
             const nuevoRegistroMaestro = {
                 id: Date.now() + Math.random(),
                 cliente: document.getElementById("clienteName").value,
-                celular: document.getElementById("clienteCelular").value,       // Nuevo atributo de tabla CLIENTE
-                direccion: document.getElementById("clienteDireccion").value,   // Nuevo atributo de tabla CLIENTE
+                celular: document.getElementById("clienteCelular").value,
+                direccion: document.getElementById("clienteDireccion").value,
                 producto: selectProducto.value,
                 cantidad: cantidadUnidades,
-                subtotal: precioUnitario * cantidadUnidades, // Multiplicación matemática automatizada
+                subtotal: precioUnitario * cantidadUnidades,
                 metodo: document.getElementById("metodoPago").value,
                 estadoPago: document.getElementById("estadoPago").value,
                 estadoEntrega: document.getElementById("estadoEntrega").value,
-                fechaCompra: obtenerFechaHoy(), // Captura automática de fecha
+                fechaCompra: obtenerFechaHoy(),
                 fechaEntrega: document.getElementById("estadoEntrega").value === "Entregado" ? obtenerFechaHoy() : "-"
             };
 
             historialGlobal.push(nuevoRegistroMaestro);
             guardarYRefrescar();
             adminForm.reset();
-            alert("🔄 [Sincronización Simulada] Registro cargado en el sistema operativo.");
+            alert("✅ [Simulación Completada] Registro guardado de forma visual en las grillas del sistema.");
         });
     }
 
-    // Inicialización automática al cargar las páginas
     renderTablaOperativa();
     renderTablaHistorial();
 });
