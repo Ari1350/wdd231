@@ -3,155 +3,176 @@ document.addEventListener("DOMContentLoaded", () => {
     const tablaPedidos = document.getElementById("tablaPedidos");
     const tablaHistorial = document.getElementById("tablaHistorial");
 
-    let historialGlobal = JSON.parse(localStorage.getItem("historial_completo_crochet")) || [];
-    const obtenerFechaHoy = () => new Date().toISOString().split('T')[0];
+    let historialGlobal = [];
 
-    function renderTablaOperativa() {
-        if (!tablaPedidos) return;
-        tablaPedidos.innerHTML = "";
-        const pendientes = historialGlobal.filter(p => p.estadoEntrega === "Pendiente");
-
-        if (pendientes.length === 0) {
-            tablaPedidos.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:30px; color:#1b4d2e; font-style:italic;">No existen entregas en curso en este momento.</td></tr>`;
-            return;
+    // --- 1. FUNCIÓN PARA LEER DATOS REALES DESDE FLASK ---
+        async function cargarHistorialDesdeServidor() {
+        try {
+            // Si ve la tabla de pedidos usa el canal de pendientes, si no, usa el historial completo
+            const rutaAPI = tablaPedidos ? 'http://127.0.0.1:5000/obtener_entregas_pendientes' : 'http://127.0.0.1:5000/obtener_historial';
+            
+            const res = await fetch(rutaAPI);
+            if (!res.ok) throw new Error("Error en la API");
+            
+            historialGlobal = await res.json();
+            
+            if (tablaPedidos) renderTablaOperativa();
+            if (tablaHistorial) renderTablaHistorial();
+        } catch (error) {
+            console.error("❌ Error al cargar los datos:", error);
         }
-
-        pendientes.forEach((pedido) => {
-            const tr = document.createElement("tr");
-            tr.style.borderBottom = "1px solid #C1E1C1";
-            const globalIndex = historialGlobal.findIndex(g => g.id === pedido.id);
-
-            tr.innerHTML = `
-                <td style="padding: 12px;">${pedido.fechaCompra}</td>
-                <td style="padding: 12px;"><strong>${pedido.cliente}</strong><br><small style="color:#666;">Cel: ${pedido.celular}</small></td>
-                <td style="padding: 12px;">${pedido.producto} (x${pedido.cantidad})</td>
-                <td style="padding: 12px; font-weight: bold;">Bs. ${pedido.subtotal.toFixed(2)}</td>
-                <td style="padding: 12px;"><span style="color:#b07d00; font-weight:bold;">${pedido.estadoPago}</span> / <span style="color:#666;">${pedido.estadoEntrega}</span></td>
-                <td style="padding: 12px; text-align: center;">
-                    <button class="done-btn" data-index="${globalIndex}" style="padding: 5px 10px; background-color: #1b4d2e; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right:5px; font-family: inherit;">✅ Entregado</button>
-                    <button class="cancel-btn" data-index="${globalIndex}" style="padding: 5px 10px; background-color: #c5221f; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-family: inherit;">❌ Cancelar</button>
-                </td>
-            `;
-            tablaPedidos.appendChild(tr);
-        });
-
-        document.querySelectorAll(".done-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const idx = e.target.getAttribute("data-index");
-                historialGlobal[idx].estadoEntrega = "Entregado";
-                historialGlobal[idx].estadoPago = "Completado";
-                historialGlobal[idx].fechaEntrega = obtenerFechaHoy();
-                guardarYRefrescar();
-            });
-        });
-
-        document.querySelectorAll(".cancel-btn").forEach(btn => {
-            btn.addEventListener("click", (e) => {
-                const idx = e.target.getAttribute("data-index");
-                historialGlobal[idx].estadoEntrega = "Cliente canceló el pedido";
-                historialGlobal[idx].fechaEntrega = "-";
-                guardarYRefrescar();
-            });
-        });
     }
 
+    // --- 2. RENDERIZADO PARA LA TABLA DE ADMIN.HTML ---
+function renderTablaOperativa() {
+    if (!tablaPedidos) return;
+    tablaPedidos.innerHTML = "";
+
+    if (historialGlobal.length === 0) {
+        tablaPedidos.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color:#1b4d2e; font-style:italic;">No existen entregas pendientes en este momento.</td></tr>`;
+        return;
+    }
+
+    historialGlobal.forEach((pedido, index) => {
+        const tr = document.createElement("tr");
+        tr.style.borderBottom = "1px solid #C1E1C1";
+        tr.innerHTML = `
+            <td style="padding: 10px; border: 1px solid #C1E1C1;">${pedido.fechaCompra ? pedido.fechaCompra.split(' ')[0] : 'Hoy'}</td>
+            <td style="padding: 10px; border: 1px solid #C1E1C1;"><strong>${pedido.cliente}</strong><br><small style="color:#666;">Cel: ${pedido.celular || 'S/N'}</small></td>
+            <td style="padding: 10px; border: 1px solid #C1E1C1;">${pedido.producto} (x${pedido.cantidad || 1})</td>
+            <td style="padding: 10px; border: 1px solid #C1E1C1; font-weight: bold;">Bs. ${parseFloat(pedido.subtotal || 0).toFixed(2)}</td>
+            <td style="padding: 10px; border: 1px solid #C1E1C1;">${pedido.estadoPago} / ${pedido.metodo || 'QR'}</td>
+            <td style="padding: 10px; border: 1px solid #C1E1C1; text-align: center;">
+                <button class="done-btn" data-index="${index}" style="padding: 5px 10px; background-color: #1b4d2e; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 5px;">✅ Entregado</button>
+                <button class="cancel-btn" data-index="${index}" style="padding: 5px 10px; background-color: #c5221f; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">❌ Cancelar</button>
+            </td>
+        `;
+        tablaPedidos.appendChild(tr);
+    });
+
+    // LÓGICA DEL BOTÓN ENTREGADO
+    document.querySelectorAll(".done-btn").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+            const idx = e.target.getAttribute("data-index");
+            const pedidoSeleccionado = historialGlobal[idx];
+            try {
+                const res = await fetch('http://127.0.0.1:5000/completar_entrega', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ cliente: pedidoSeleccionado.cliente })
+                });
+                if (res.ok) {
+                    alert(`🎉 ¡Pedido de ${pedidoSeleccionado.cliente} despachado con éxito!`);
+                    await cargarHistorialDesdeServidor();
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    });
+
+    // LÓGICA DEL NUEVO BOTÓN CANCELAR
+    document.querySelectorAll(".cancel-btn").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+            const idx = e.target.getAttribute("data-index");
+            const pedidoSeleccionado = historialGlobal[idx];
+            
+            if (confirm(`¿Estás seguro de que deseas cancelar la orden de ${pedidoSeleccionado.cliente}?`)) {
+                try {
+                    // Enviamos una nueva ruta específica para cancelaciones
+                    const res = await fetch('http://127.0.0.1:5000/cancelar_orden', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ cliente: pedidoSeleccionado.cliente })
+                    });
+                    
+                    if (res.ok) {
+                        alert(`❌ Orden de ${pedidoSeleccionado.cliente} marcada como Cancelada.`);
+                        await cargarHistorialDesdeServidor();
+                    } else {
+                        alert("❌ El servidor rechazó la solicitud de cancelación.");
+                    }
+                } catch (error) {
+                    console.error("Error en la petición de cancelación:", error);
+                }
+            }
+        });
+    });
+}
+
+
+    // --- 3. RENDERIZADO PARA LA TABLA DE HISTORIAL.HTML ---
     function renderTablaHistorial() {
         if (!tablaHistorial) return;
         tablaHistorial.innerHTML = "";
 
         if (historialGlobal.length === 0) {
-            tablaHistorial.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666;">El historial de balances está vacío.</td></tr>`;
+            tablaHistorial.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666; font-style:italic;">El historial de balances está vacío.</td></tr>`;
             return;
         }
 
         historialGlobal.forEach((pedido) => {
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid #C1E1C1";
-            let colorEntrega = pedido.estadoEntrega === "Entregado" ? "#137333" : (pedido.estadoEntrega === "Pendiente" ? "#b07d00" : "#c5221f");
-            let colorPago = pedido.estadoPago === "Completado" ? "#137333" : (pedido.estadoPago === "Pendiente" ? "#b07d00" : "#c5221f");
-
+            
             tr.innerHTML = `
-                <td style="padding: 12px;">${pedido.fechaCompra}</td>
-                <td style="padding: 12px; font-weight: bold;">${pedido.fechaEntrega}</td>
-                <td style="padding: 12px;"><strong>${pedido.cliente}</strong><br><small style="color:#666;">${pedido.direccion}</small></td>
-                <td style="padding: 12px;">${pedido.producto} (x${pedido.cantidad})</td>
-                <td style="padding: 12px; font-weight: bold;">Bs. ${pedido.subtotal.toFixed(2)}</td>
-                <td style="padding: 12px; font-weight: bold; color: ${colorPago};">${pedido.estadoPago}</td>
-                <td style="padding: 12px; font-weight: bold; color: ${colorEntrega};">${pedido.estadoEntrega}</td>
+                <td style="padding: 12px; border: 1px solid #eee;">${pedido.fechaCompra ? pedido.fechaCompra.split(' ')[0] : '-'}</td>
+                <td style="padding: 12px; border: 1px solid #eee; font-weight: bold;">${pedido.fechaEntrega ? pedido.fechaEntrega.split(' ')[0] : '-'}</td>
+                <td style="padding: 12px; border: 1px solid #eee;"><strong>${pedido.cliente}</strong><br><small style="color:#666;">${pedido.direccion || 'WhatsApp'}</small></td>
+                <td style="padding: 12px; border: 1px solid #eee;">${pedido.producto}</td>
+                <td style="padding: 12px; border: 1px solid #eee; font-weight: bold;">Bs. ${parseFloat(pedido.subtotal || 0).toFixed(2)}</td>
+                <td style="padding: 12px; border: 1px solid #eee; font-weight: bold;">${pedido.estadoPago}</td>
+                <td style="padding: 12px; border: 1px solid #eee; color: #666;">${pedido.estadoEntrega || 'Pendiente'}</td>
             `;
             tablaHistorial.appendChild(tr);
         });
     }
 
-    function guardarYRefrescar() {
-        localStorage.setItem("historial_completo_crochet", JSON.stringify(historialGlobal));
-        renderTablaOperativa();
-        renderTablaHistorial();
-    }
-
+    // --- 4. CAPTURA SEGURO DEL FORMULARIO ---
     if (adminForm) {
-        adminForm.addEventListener("submit", (e) => {
+        adminForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const selectProducto = document.getElementById("productoSelect");
-            const precioUnitario = parseFloat(selectProducto.options[selectProducto.selectedIndex].dataset.precio);
-            const cantidadUnidades = parseInt(document.getElementById("txtCantidad").value);
+            
+            // Buscamos los elementos de forma segura (pueden no existir en todas las páginas)
+            const elCelular = document.getElementById("clienteCelular");
+            const elDireccion = document.getElementById("clienteDireccion");
+            const elEstado = document.getElementById("estadoPedido") || document.getElementById("estadoPago");
 
-            const nuevoRegistroMaestro = {
-                id: Date.now() + Math.random(),
-                cliente: document.getElementById("clienteName").value,
-                celular: document.getElementById("clienteCelular").value,
-                direccion: document.getElementById("clienteDireccion").value,
-                producto: selectProducto.value,
-                cantidad: cantidadUnidades,
-                subtotal: precioUnitario * cantidadUnidades,
+            // Armamos el objeto con respaldos automáticos por si el campo es nulo
+            const payload = {
+                nombre: document.getElementById("clienteName").value,
+                celular: elCelular ? elCelular.value : "70000000",
+                direccion: elDireccion ? elDireccion.value : "Venta directa sin dirección",
+                producto: document.getElementById("productoSelect").value,
                 metodo: document.getElementById("metodoPago").value,
-                estadoPago: document.getElementById("estadoPago").value,
-                estadoEntrega: document.getElementById("estadoEntrega").value,
-                fechaCompra: obtenerFechaHoy(),
-                fechaEntrega: document.getElementById("estadoEntrega").value === "Entregado" ? obtenerFechaHoy() : "-"
+                estadoPago: elEstado ? elEstado.value : "Pendiente"
             };
 
-            historialGlobal.push(nuevoRegistroMaestro);
-            guardarYRefrescar();
-            adminForm.reset();
-            alert("✅ [Simulación Completada] Registro guardado de forma visual en las grillas del sistema.");
+            try {
+                // Enviamos los datos directamente al servidor Flask
+                const res = await fetch('http://127.0.0.1:5000/registrar_cliente', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                
+                const resultado = await res.json();
+
+                if (res.ok) {
+                    alert("🎉 ¡Conexión Exitosa! Datos registrados en ventas_crochet.db");
+                    adminForm.reset();
+                    // Refrescamos los datos de las tablas de inmediato
+                    await cargarHistorialDesdeServidor();
+                } else {
+                    alert("❌ Error devuelto por el servidor: " + resultado.error);
+                }
+            } catch (error) {
+                alert("❌ No se pudo conectar con Flask. Verifica que main.py esté ejecutándose.");
+                console.error(error);
+            }
         });
     }
 
-    renderTablaOperativa();
-    renderTablaHistorial();
+    // Arrancar la carga apenas se abra la página actual
+    cargarHistorialDesdeServidor();
 });
-
-async function guardarContacto() {
-    const datos = {
-        nombre: document.getElementById('nombre').value,
-        celular: document.getElementById('celular').value,
-        direccion: document.getElementById('direccion').value
-    };
-
-    const respuesta = await fetch('http://127.0.0.1:5000/registrar_cliente', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(datos)
-    });
-
-    const resultado = await respuesta.json();
-    alert(resultado.mensaje || "Error al guardar");
-}
-
-async function cargarHistorial() {
-    const res = await fetch('http://127.0.0.1:5000/obtener_historial');
-    const datos = await res.json();
-    const tabla = document.getElementById('cuerpo-tabla-historial'); 
-    
-    datos.forEach(venta => {
-        tabla.innerHTML += `
-            <tr>
-                <td>${venta.Nombre}</td>
-                <td>${venta.monto} Bs.</td>
-                <td>${venta.fecha_pago}</td>
-                <td>${venta.estado_pago}</td>
-            </tr>`;
-    });
-}
-window.onload = cargarHistorial;
