@@ -173,11 +173,20 @@ def obtener_historial():
             cursor = conn.cursor()
             # Consulta DML con JOIN para unir Cliente y Pago (Unidad IV)
             query = """
-                SELECT C.Nombre, P.monto, P.fecha_pago, P.estado_pago 
-                FROM Cliente C
-                JOIN Pedido Pe ON C.id_cliente = Pe.id_cliente
-                JOIN Pago P ON Pe.ID_Pedido = P.id_pedido
-            """
+                    SELECT 
+                        C.Nombre AS cliente, 
+                        P.monto AS subtotal, 
+                        P.fecha_pago AS fechaCompra,
+                        C.direccion AS direccion,
+                        'Vaquita de Crochet' AS producto, 
+                        1 AS cantidad,
+                        P.fecha_pago AS fechaEntrega,
+                        P.estado_pago AS estadoPago,
+                        'Entregado' AS estadoEntrega
+                    FROM Cliente C
+                    JOIN Pedido Pe ON C.id_cliente = Pe.id_cliente
+                    JOIN Pago P ON Pe.ID_Pedido = P.id_pedido
+                """
             cursor.execute(query)
             historial = [dict(row) for row in cursor.fetchall()]
         return jsonify(historial), 200
